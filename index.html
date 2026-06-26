@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Armory | Advanced AI-Driven Data Automation Platform</title>
-  
+
   <!-- SEO Meta Tags -->
   <meta name="description" content="Armory is a specialized enterprise infrastructure for building and deploying custom AI agents and orchestrating complex automation workflows at scale.">
   <meta name="keywords" content="AI, Data Automation, AI Agents, Enterprise Workflows, Neural Processing, LLM Orchestration">
   <meta name="author" content="Armory Team">
-  
-  <!-- Open Graph / Facebook -->
+
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://armory.ai/">
   <meta property="og:title" content="Armory | Premium AI-Driven Data Automation Platform">
@@ -25,33 +25,64 @@
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="SVGs/cube-16-solid.svg">
 
-  <!-- Links to Stylesheet -->
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="index.css">
 </head>
 <body>
 
-  <!-- Premium Sticky Header Navigation -->
+  <!-- Scroll Progress Indicator -->
+  <div class="scroll-progress" id="scroll-progress"></div>
+
+  <!-- Page Loader -->
+  <div id="page-loader" class="page-loader">
+    <div class="loader-terminal">
+      <div class="loader-header">
+        <svg viewBox="0 0 16 16" class="loader-logo"><path d="M8.372 1.349a.75.75 0 0 0-.744 0l-4.81 2.748L8 7.131l5.182-3.034zM14 5.357L8.75 8.43v6.005l4.872-2.784A.75.75 0 0 0 14 11zm-6.75 9.078V8.43L2 5.357V11c0 .27.144.518.378.651z"/></svg>
+        <span class="loader-title">ARMORY SYSTEM BOOT v2.4</span>
+      </div>
+      <div class="loader-body">
+        <div id="loader-logs" class="loader-logs"></div>
+        <div class="loader-progress-container">
+          <div class="loader-progress-bar" id="loader-progress-bar"></div>
+        </div>
+        <div class="loader-footer">
+          <span>SECURE PROTOCOL ACTIVE</span>
+          <span id="loader-pct">0%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom cursor -->
+  <div class="cursor-dot" id="cursor-dot"></div>
+  <div class="cursor-ring" id="cursor-ring"></div>
+
+  <!-- ═══ HEADER ═══ -->
   <header class="site-header" id="site-header">
     <div class="container nav-container">
       <a href="#" class="logo" id="header-logo">
-        <!-- Cube SVG for Logo -->
         <svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.372 1.349a.75.75 0 0 0-.744 0l-4.81 2.748L8 7.131l5.182-3.034zM14 5.357L8.75 8.43v6.005l4.872-2.784A.75.75 0 0 0 14 11zm-6.75 9.078V8.43L2 5.357V11c0 .27.144.518.378.651z"/></svg>
         <span>armory</span>
       </a>
-      
+
       <nav class="nav-menu" aria-label="Main Navigation">
         <ul class="nav-links">
-          <li><a href="#workflow">AI Strategy</a></li>
-          <li><a href="#features">Custom Agents</a></li>
-          <li><a href="#projects">Process Automation</a></li>
-          <li><a href="#pricing">Data Intelligence</a></li>
+          <li><a href="#workflow">Builder</a></li>
+          <li><a href="#demo">Demo</a></li>
+          <li><a href="#features">Telemetry</a></li>
+          <li><a href="#projects">Cases</a></li>
+          <li><a href="#pricing">Pricing</a></li>
         </ul>
       </nav>
 
       <div class="header-cta">
-        <a href="#pricing" class="btn btn-secondary">Sign In</a>
+        <a href="#pricing" class="btn btn-ghost">Sign In</a>
         <a href="#pricing" class="btn btn-primary btn-icon" id="nav-cta-btn">
-          <span>Build A Workflow</span>
+          <span>Launch App</span>
           <svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.372 1.349a.75.75 0 0 0-.744 0l-4.81 2.748L8 7.131l5.182-3.034zM14 5.357L8.75 8.43v6.005l4.872-2.784A.75.75 0 0 0 14 11zm-6.75 9.078V8.43L2 5.357V11c0 .27.144.518.378.651z"/></svg>
         </a>
       </div>
@@ -63,164 +94,230 @@
   </header>
 
   <main>
-    <!-- Hero Section -->
+
+    <!-- ═══ HERO — Split-panel with live terminal ═══ -->
     <section class="hero-section" id="hero">
-      <div class="container" style="display: flex; align-items: center; width: 100%;">
-        <div class="hero-content">
-          <h1 class="hero-title">Power your<br>future with AI</h1>
-          <p class="hero-desc">Deploy custom enterprise agents and automate complex workflows. Scale your intelligence with Armory today.</p>
-          <div class="hero-buttons">
-            <a href="#pricing" class="btn btn-primary btn-icon" id="hero-primary-cta">
-              <svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.372 1.349a.75.75 0 0 0-.744 0l-4.81 2.748L8 7.131l5.182-3.034zM14 5.357L8.75 8.43v6.005l4.872-2.784A.75.75 0 0 0 14 11zm-6.75 9.078V8.43L2 5.357V11c0 .27.144.518.378.651z"/></svg>
-              <span>Build A Workflow</span>
-            </a>
-            <a href="#features" class="btn btn-secondary">Learn More</a>
-          </div>
+      <!-- Left editorial column -->
+      <div class="hero-left">
+        <div class="hero-eyebrow">
+          <span class="eyebrow-dot"></span>
+          <span class="eyebrow-text font-mono">NEURAL INFRASTRUCTURE v2.4</span>
+        </div>
+
+        <h1 class="hero-title">
+          <span class="hero-word">Build</span>
+          <span class="hero-word">Agents</span>
+          <span class="hero-word hero-word--accent" data-glitch="at Scale">at Scale</span>
+        </h1>
+
+        <p class="hero-desc">Deploy intelligent automation with zero infrastructure overhead. Custom neural agents that execute, reason, and adapt across your entire data stack.</p>
+
+        <div class="hero-actions">
+          <a href="#pricing" class="btn btn-primary btn-icon" id="hero-primary-cta">
+            <span>Start Building</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+          </a>
+          <a href="#workflow" class="hero-link">
+            <span>See how it works</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
+          </a>
+        </div>
+
+        <div class="hero-proof">
+          <div class="proof-item"><span class="proof-num font-mono">12ms</span><span class="proof-label">Avg latency</span></div>
+          <div class="proof-divider"></div>
+          <div class="proof-item"><span class="proof-num font-mono">10×</span><span class="proof-label">Throughput</span></div>
+          <div class="proof-divider"></div>
+          <div class="proof-item"><span class="proof-num font-mono">99%</span><span class="proof-label">Uptime SLA</span></div>
         </div>
       </div>
-      <!-- Interactive Wave Background Canvas -->
-      <div class="hero-canvas-container">
+
+      <!-- Right terminal mockup -->
+      <div class="hero-right">
+        <div class="terminal-window" id="terminal-window">
+          <div class="terminal-bar">
+            <div class="terminal-dots">
+              <span class="t-dot t-dot--red"></span>
+              <span class="t-dot t-dot--yellow"></span>
+              <span class="t-dot t-dot--green"></span>
+            </div>
+            <span class="terminal-title font-mono">armory-agent — bash</span>
+          </div>
+          <div class="terminal-body">
+            <div class="terminal-output" id="terminal-output"></div>
+            <div class="terminal-prompt">
+              <span class="t-prompt font-mono">armory@core:~$</span>
+              <span class="t-cursor" id="t-cursor"></span>
+            </div>
+          </div>
+        </div>
+        <!-- Floating metric chips -->
+        <div class="floating-chip chip-1 font-mono">
+          <span class="chip-dot chip-dot--live"></span>
+          <span>3 agents running</span>
+        </div>
+        <div class="floating-chip chip-2 font-mono">
+          <span>token efficiency</span>
+          <span class="chip-accent">99.2%</span>
+        </div>
+        <!-- Interactive particle canvas -->
         <canvas id="hero-wave-canvas"></canvas>
       </div>
     </section>
 
-    <!-- Integrations Logos section -->
-    <section class="integrations-section">
-      <div class="container">
-        <div class="integrations-grid">
-          <div class="integrations-text">
-            <h3>Integrations</h3>
-            <p>Connect with the world's most powerful neural engines. Integrate with OpenAI, Claude, and Perplexity seamlessly.</p>
-          </div>
-          <div class="integrations-logos">
-            <div class="integration-logo" title="OpenAI">
-              <svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.372 1.349a.75.75 0 0 0-.744 0l-4.81 2.748L8 7.131l5.182-3.034zM14 5.357L8.75 8.43v6.005l4.872-2.784A.75.75 0 0 0 14 11zm-6.75 9.078V8.43L2 5.357V11c0 .27.144.518.378.651z"/></svg>
-              <span>OpenAI</span>
-            </div>
-            <div class="integration-logo" title="Anthropic Claude">
-              <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M12 3v18M3 12h18"/></svg>
-              <span>Claude</span>
-            </div>
-            <div class="integration-logo" title="Perplexity">
-              <svg viewBox="0 0 20 20"><path d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33l-1.42 1.42l-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"/></svg>
-              <span>Perplexity</span>
-            </div>
-            <div class="integration-logo" title="Gemini">
-              <svg viewBox="0 0 24 24"><path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 0 1 5.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941"/></svg>
-              <span>Gemini</span>
-            </div>
-          </div>
+    <!-- ═══ TICKER TAPE ═══ -->
+    <div class="ticker-section" aria-hidden="true">
+      <div class="ticker-track">
+        <div class="ticker-inner" id="ticker-inner">
+          <span>OpenAI Integration</span><span class="ticker-sep">///</span>
+          <span>Anthropic Claude</span><span class="ticker-sep">///</span>
+          <span>Gemini 2.0</span><span class="ticker-sep">///</span>
+          <span>LLM Orchestration</span><span class="ticker-sep">///</span>
+          <span>Zero-Downtime Deploys</span><span class="ticker-sep">///</span>
+          <span>99.99% SLA</span><span class="ticker-sep">///</span>
+          <span>Edge Node Routing</span><span class="ticker-sep">///</span>
+          <span>Custom Agents</span><span class="ticker-sep">///</span>
+          <span>Perplexity Connect</span><span class="ticker-sep">///</span>
+          <span>Neural Pipelines</span><span class="ticker-sep">///</span>
+          <!-- duplicate for seamless loop -->
+          <span>OpenAI Integration</span><span class="ticker-sep">///</span>
+          <span>Anthropic Claude</span><span class="ticker-sep">///</span>
+          <span>Gemini 2.0</span><span class="ticker-sep">///</span>
+          <span>LLM Orchestration</span><span class="ticker-sep">///</span>
+          <span>Zero-Downtime Deploys</span><span class="ticker-sep">///</span>
+          <span>99.99% SLA</span><span class="ticker-sep">///</span>
+          <span>Edge Node Routing</span><span class="ticker-sep">///</span>
+          <span>Custom Agents</span><span class="ticker-sep">///</span>
+          <span>Perplexity Connect</span><span class="ticker-sep">///</span>
+          <span>Neural Pipelines</span><span class="ticker-sep">///</span>
         </div>
       </div>
-    </section>
+    </div>
 
-    <!-- Metrics Section -->
+    <!-- ═══ METRICS — Bold stacked layout ═══ -->
     <section class="metrics-section" id="metrics">
       <div class="container">
-        <div class="metrics-grid">
-          <div class="metric-card card-glass">
-            <div class="metric-value font-mono text-gradient">12ms</div>
-            <div class="metric-label">Core Latency</div>
-            <p class="metric-desc">Engineered for real-time throughput with lightning-fast routing overhead and minimal server hop latency.</p>
+        <div class="metrics-header">
+          <span class="section-label font-mono">// PERFORMANCE</span>
+          <h2 class="metrics-title">Numbers that<br><em>don't lie</em></h2>
+        </div>
+        <div class="metrics-stack">
+          <div class="metric-row" id="metric-0">
+            <div class="metric-index font-mono">01</div>
+            <div class="metric-main">
+              <div class="metric-value font-mono text-gradient">12ms</div>
+              <div class="metric-label">Core Latency</div>
+            </div>
+            <div class="metric-bar-wrap">
+              <div class="metric-bar-track"><div class="metric-bar-fill" style="--bar-pct:92%"></div></div>
+            </div>
+            <p class="metric-desc">Real-time throughput with lightning-fast routing overhead and minimal server hop latency across global edge nodes.</p>
           </div>
-          <div class="metric-card card-glass">
-            <div class="metric-value font-mono text-gradient">10x</div>
-            <div class="metric-label">Throughput Boost</div>
-            <p class="metric-desc">Automate heavy processing pipelines concurrently without scaling developer overhead or computing costs.</p>
+          <div class="metric-row" id="metric-1">
+            <div class="metric-index font-mono">02</div>
+            <div class="metric-main">
+              <div class="metric-value font-mono text-gradient">10×</div>
+              <div class="metric-label">Throughput Boost</div>
+            </div>
+            <div class="metric-bar-wrap">
+              <div class="metric-bar-track"><div class="metric-bar-fill" style="--bar-pct:78%"></div></div>
+            </div>
+            <p class="metric-desc">Automate heavy processing pipelines concurrently without scaling developer overhead or compute costs.</p>
           </div>
-          <div class="metric-card card-glass">
-            <div class="metric-value font-mono text-gradient">99%</div>
-            <div class="metric-label">Token Efficiency</div>
-            <p class="metric-desc">Advanced context isolation caching algorithms prevent repetitive processing queries and reduce token usage.</p>
+          <div class="metric-row" id="metric-2">
+            <div class="metric-index font-mono">03</div>
+            <div class="metric-main">
+              <div class="metric-value font-mono text-gradient">99%</div>
+              <div class="metric-label">Token Efficiency</div>
+            </div>
+            <div class="metric-bar-wrap">
+              <div class="metric-bar-track"><div class="metric-bar-fill" style="--bar-pct:99%"></div></div>
+            </div>
+            <p class="metric-desc">Context isolation caching algorithms prevent repetitive queries and reduce token usage by orders of magnitude.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Projects List Showcase Section -->
+    <!-- ═══ CASES — Hover-expand project list ═══ -->
     <section class="projects-section" id="projects">
       <div class="container">
-        <span class="section-label">// CASES</span>
-        <div class="projects-header">
-          <h2>Proven neural solutions</h2>
+        <div class="projects-head">
+          <span class="section-label font-mono">// CASES</span>
+          <h2>Proven in<br><span class="text-gradient">the field</span></h2>
         </div>
-        
+
         <div class="projects-list">
-          <!-- Project 1 -->
-          <article class="project-item" id="project-cigna">
-            <div class="project-preview-overlay"></div>
-            <div class="project-logo-container">
-              <svg viewBox="0 0 16 16" width="32" height="32"><path d="M8.372 1.349a.75.75 0 0 0-.744 0l-4.81 2.748L8 7.131l5.182-3.034zM14 5.357L8.75 8.43v6.005l4.872-2.784A.75.75 0 0 0 14 11zm-6.75 9.078V8.43L2 5.357V11c0 .27.144.518.378.651z"/></svg>
+          <article class="project-item" id="project-cigna" tabindex="0">
+            <div class="pi-num font-mono">01</div>
+            <div class="pi-content">
+              <h3 class="pi-title">Cigna Smart Health Systems</h3>
+              <p class="pi-desc">Revolutionizing patient care through predictive analytics and seamless AI-driven diagnostic integration tools at scale.</p>
             </div>
-            <div class="project-date">//2026</div>
-            <div class="project-details">
-              <h3>Cigna Smart Health Systems</h3>
-              <p>Revolutionizing patient care through predictive analytics and seamless AI-driven diagnostic integration tools.</p>
+            <div class="pi-tags">
+              <span class="pi-tag">Healthcare AI</span>
+              <span class="pi-tag">Predictive</span>
             </div>
-            <div class="project-action">
-              <button class="project-btn" aria-label="Open Cigna project">
-                <svg viewBox="0 0 24 24"><path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m8.25 4.5l7.5 7.5l-7.5 7.5"/></svg>
-              </button>
+            <div class="pi-year font-mono">2026</div>
+            <div class="pi-arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
             </div>
+            <div class="pi-glow"></div>
           </article>
 
-          <!-- Project 2 -->
-          <article class="project-item" id="project-aetna">
-            <div class="project-preview-overlay"></div>
-            <div class="project-logo-container">
-              <svg viewBox="0 0 16 16" width="32" height="32"><path d="M8.372 1.349a.75.75 0 0 0-.744 0l-4.81 2.748L8 7.131l5.182-3.034zM14 5.357L8.75 8.43v6.005l4.872-2.784A.75.75 0 0 0 14 11zm-6.75 9.078V8.43L2 5.357V11c0 .27.144.518.378.651z"/></svg>
+          <article class="project-item" id="project-aetna" tabindex="0">
+            <div class="pi-num font-mono">02</div>
+            <div class="pi-content">
+              <h3 class="pi-title">Aetna Health Data Ecosystem</h3>
+              <p class="pi-desc">Automated member data management using secure AI to provide personalized care and clinical insights for 23M patients.</p>
             </div>
-            <div class="project-date">//2026</div>
-            <div class="project-details">
-              <h3>Aetna Health Data Ecosystem</h3>
-              <p>We automated Aetna's member data management using secure AI to provide personalized care and clinical insights.</p>
+            <div class="pi-tags">
+              <span class="pi-tag">Data Ops</span>
+              <span class="pi-tag">Secure AI</span>
             </div>
-            <div class="project-action">
-              <button class="project-btn" aria-label="Open Aetna project">
-                <svg viewBox="0 0 24 24"><path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m8.25 4.5l7.5 7.5l-7.5 7.5"/></svg>
-              </button>
+            <div class="pi-year font-mono">2026</div>
+            <div class="pi-arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
             </div>
+            <div class="pi-glow"></div>
           </article>
 
-          <!-- Project 3 -->
-          <article class="project-item" id="project-anthem">
-            <div class="project-preview-overlay"></div>
-            <div class="project-logo-container">
-              <svg viewBox="0 0 16 16" width="32" height="32"><path d="M8.372 1.349a.75.75 0 0 0-.744 0l-4.81 2.748L8 7.131l5.182-3.034zM14 5.357L8.75 8.43v6.005l4.872-2.784A.75.75 0 0 0 14 11zm-6.75 9.078V8.43L2 5.357V11c0 .27.144.518.378.651z"/></svg>
+          <article class="project-item" id="project-anthem" tabindex="0">
+            <div class="pi-num font-mono">03</div>
+            <div class="pi-content">
+              <h3 class="pi-title">Anthem Neural Care Network</h3>
+              <p class="pi-desc">Custom LLM deployment automating Anthem's provider relations, reducing ticket latency by 85% in under 6 weeks.</p>
             </div>
-            <div class="project-date">//2026</div>
-            <div class="project-details">
-              <h3>Anthem Neural Care Network</h3>
-              <p>We deployed a custom LLM to automate Anthem's provider relations, reducing ticket latency by eighty-five percent.</p>
+            <div class="pi-tags">
+              <span class="pi-tag">LLM</span>
+              <span class="pi-tag">Enterprise</span>
             </div>
-            <div class="project-action">
-              <button class="project-btn" aria-label="Open Anthem project">
-                <svg viewBox="0 0 24 24"><path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m8.25 4.5l7.5 7.5l-7.5 7.5"/></svg>
-              </button>
+            <div class="pi-year font-mono">2026</div>
+            <div class="pi-arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
             </div>
+            <div class="pi-glow"></div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- Workflow Builder Mockup Canvas Section -->
+    <!-- ═══ WORKFLOW BUILDER ═══ -->
     <section class="canvas-section" id="workflow">
       <div class="container">
         <div class="canvas-header">
-          <span class="section-label">// INTEGRATION BUILDER</span>
-          <h2>Build logic at scale</h2>
-          <p>Design, deploy, and manage sophisticated AI workflows through an intuitive visual interface. No complex coding—just pure logic.</p>
+          <span class="section-label font-mono">// INTEGRATION BUILDER</span>
+          <h2>Build logic<br><span class="text-gradient">at scale</span></h2>
+          <p>Design, deploy, and manage sophisticated AI workflows through an intuitive visual interface. No complex coding — just pure logic.</p>
         </div>
 
         <div class="workflow-board" id="workflow-board">
-          <!-- Connection lines in background -->
           <svg class="svg-connections-overlay">
             <path d="M 420 220 Q 480 220, 480 320 T 540 320" />
             <path d="M 420 220 H 600" />
             <path d="M 790 220 Q 850 220, 850 320 T 910 320" />
           </svg>
 
-          <!-- Side controls panel -->
           <div class="workflow-side-panel">
             <div class="panel-header">STACK ELEMENTS</div>
             <div class="panel-group">
@@ -235,11 +332,9 @@
             </div>
           </div>
 
-          <!-- Nodes container on the visual canvas -->
           <div class="workflow-nodes-container">
-            <!-- Row 1 -->
             <div class="workflow-row">
-              <div class="wf-node" style="left: 0px; top: 0px;">
+              <div class="wf-node">
                 <div class="wf-node-icon">
                   <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/></svg>
                 </div>
@@ -249,9 +344,9 @@
                 </div>
               </div>
 
-              <div class="wf-node" style="left: 0px; top: 0px;">
+              <div class="wf-node">
                 <div class="wf-node-icon">
-                  <svg viewBox="0 0 256 256" fill="none"><g stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93c.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 0 1 1.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204c.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78c-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 0 1-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107c-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93c-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 0 1-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204c-.165-.397-.505-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78c.165-.398.143-.854-.107-1.204l-.527-.738a1.125 1.125 0 0 1 .12-1.45l.773-.773a1.125 1.125 0 0 1 1.45-.12l.737.527c.35.25.807.272 1.204.107c.397-.165.71-.505.78-.929l.15-.894Z"/><path d="M15 12a3 3 0 1 1-6 0a3 3 0 0 1 6 0Z"/></g></svg>
+                  <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 0 1 1.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 0 1-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 0 1-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.107-1.204l-.527-.738a1.125 1.125 0 0 1 .12-1.45l.773-.773a1.125 1.125 0 0 1 1.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894Z"/><path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/></svg>
                 </div>
                 <div class="wf-node-info">
                   <span class="wf-node-name">AI Agent</span>
@@ -260,7 +355,6 @@
               </div>
             </div>
 
-            <!-- Row 2 -->
             <div class="workflow-row" style="margin-left: 200px;">
               <div class="wf-node">
                 <div class="wf-node-icon">
@@ -284,31 +378,103 @@
             </div>
           </div>
         </div>
+    </section>
+
+    <!-- ═══ INTERACTIVE PLATFORM DEMO ═══ -->
+    <section class="demo-section" id="demo">
+      <div class="container">
+        <div class="demo-header">
+          <span class="section-label font-mono">// LIVE TELEMETRY DEMO</span>
+          <h2>Platform in<br><span class="text-gradient">active flow</span></h2>
+          <p>Observe real-time agent execution across edge nodes. Drag the timeline slider or click play to scrub through a secure multi-hop transaction pipeline.</p>
+        </div>
+
+        <div class="demo-board card-glass">
+          <div class="demo-display">
+            <!-- Left panel: Viewport -->
+            <div class="demo-viewport-wrap">
+              <div class="viewport-header">
+                <span class="viewport-dot"></span>
+                <span class="viewport-title font-mono" id="viewport-filename">frame_05s.png</span>
+              </div>
+              <div class="viewport-body">
+                <div class="viewport-scanline"></div>
+                <img src="frames/frame_05s.png" alt="Armory Platform Interface Walkthrough" class="demo-frame" id="demo-frame">
+              </div>
+            </div>
+
+            <!-- Right panel: Telemetry Info -->
+            <div class="demo-telemetry">
+              <div class="telemetry-box">
+                <div class="tel-header font-mono">FLOW TELEMETRY</div>
+                <div class="tel-content">
+                  <div class="tel-row">
+                    <span class="tel-label font-mono">TIME INDEX:</span>
+                    <span class="tel-value font-mono" id="tel-time">00:05s</span>
+                  </div>
+                  <div class="tel-row">
+                    <span class="tel-label font-mono">NODE REGION:</span>
+                    <span class="tel-value font-mono" style="color:var(--color-forsythia)">us-east-2 (live)</span>
+                  </div>
+                  <div class="tel-row">
+                    <span class="tel-label font-mono">NET RATING:</span>
+                    <span class="tel-value font-mono">99.8% stability</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="telemetry-box" style="flex-grow:1">
+                <div class="tel-header font-mono">SYSTEM INSTANT LOGS</div>
+                <div class="tel-logs font-mono" id="tel-logs">
+                  <div class="log-line log-line--active" id="tel-active-log">[init] Launching Armory workflow node agent...</div>
+                  <div class="log-line text-muted">// Waiting for tick updates...</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom bar: Controls -->
+          <div class="demo-controls">
+            <button class="btn-play" id="btn-play" aria-label="Play Walkthrough Animation">
+              <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor" id="play-svg" style="width: 18px; height: 18px;"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+            
+            <div class="slider-wrapper">
+              <input type="range" min="0" max="18" value="0" class="demo-slider" id="demo-slider" aria-label="Scrub through walkthrough frames">
+              <div class="slider-ticks font-mono">
+                <span>00:05</span>
+                <span>00:20</span>
+                <span>00:45</span>
+                <span>00:65</span>
+                <span>00:82</span>
+                <span>01:05</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Bento Grid Section with Feature 2 (Bento-to-Accordion Wrapper) -->
+    <!-- ═══ FEATURES — Bento Grid / Mobile Accordion ═══ -->
     <section class="bento-section" id="features">
       <div class="container">
         <div class="bento-header">
-          <span class="section-label">// METRIC ANALYTICS</span>
-          <h2>Optimized for performance</h2>
-          <p>Monitor every neural pulse in real-time. Armory provides deep telemetry into agent accuracy, server latency, and token efficiency.</p>
+          <span class="section-label font-mono">// ANALYTICS</span>
+          <h2>Optimized for<br><span class="text-gradient">performance</span></h2>
+          <p>Monitor every neural pulse in real-time. Deep telemetry into agent accuracy, server latency, and token efficiency.</p>
         </div>
 
-        <!-- Bento Grid Desktop Layout -->
+        <!-- Bento Desktop -->
         <div class="bento-grid" id="bento-grid">
-          <!-- Card 1: System Load -->
           <div class="bento-node card-glass" id="bento-0">
             <div class="bento-node-header">
               <span class="bento-node-title">
-                <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93c.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 0 1 1.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204c.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78c-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 0 1-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107c-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93c-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 0 1-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204c-.165-.397-.505-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78c.165-.398.143-.854-.107-1.204l-.527-.738a1.125 1.125 0 0 1 .12-1.45l.773-.773a1.125 1.125 0 0 1 1.45-.12l.737.527c.35.25.807.272 1.204.107c.397-.165.71-.505.78-.929l.15-.894Z"/><path d="M15 12a3 3 0 1 1-6 0a3 3 0 0 1 6 0Z"/></g></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 0 1 1.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 0 1-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 0 1-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.107-1.204l-.527-.738a1.125 1.125 0 0 1 .12-1.45l.773-.773a1.125 1.125 0 0 1 1.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894Z"/><path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/></svg>
                 <span>System Load</span>
               </span>
               <span class="bento-node-stat">98.7%</span>
             </div>
             <div class="bento-visual">
-              <!-- Dial Gauge -->
               <div class="dial-gauge-container">
                 <svg class="dial-svg" width="140" height="140" viewBox="0 0 140 140">
                   <circle class="dial-bg" cx="70" cy="70" r="60" />
@@ -323,17 +489,15 @@
             <p class="bento-node-desc">Active neural processing distribution across high-availability cluster networks.</p>
           </div>
 
-          <!-- Card 2: SLA Response -->
           <div class="bento-node card-glass" id="bento-1">
             <div class="bento-node-header">
               <span class="bento-node-title">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 0 1 5.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M2.25 18 9 11.25l4.306 4.307a11.95 11.95 0 0 1 5.814-5.519l2.74-1.22m0 0-5.94-2.28m5.94 2.28-2.28 5.941"/></svg>
                 <span>SLA Response</span>
               </span>
               <span class="bento-node-stat">99.99%</span>
             </div>
             <div class="bento-visual">
-              <!-- Lollipop Bar Chart -->
               <div class="bar-chart-container">
                 <div class="chart-bar-line" style="--bar-height: 80px;"><div class="chart-bar-dot"></div></div>
                 <div class="chart-bar-line" style="--bar-height: 45px;"><div class="chart-bar-dot"></div></div>
@@ -346,17 +510,15 @@
             <p class="bento-node-desc">Uptime metrics mapping low-latency routing endpoints globally.</p>
           </div>
 
-          <!-- Card 3: Token Usage -->
           <div class="bento-node card-glass" id="bento-2">
             <div class="bento-node-header">
               <span class="bento-node-title">
-                <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M10.5 6a7.5 7.5 0 1 0 7.5 7.5h-7.5V6Z"/><path d="M13.5 10.5H21A7.5 7.5 0 0 0 13.5 3v7.5Z"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M10.5 6a7.5 7.5 0 1 0 7.5 7.5h-7.5V6Z"/><path d="M13.5 10.5H21A7.5 7.5 0 0 0 13.5 3v7.5Z"/></svg>
                 <span>Token Usage</span>
               </span>
               <span class="bento-node-stat">8.4M</span>
             </div>
             <div class="bento-visual">
-              <!-- Semi-circle Gauge -->
               <div class="semi-gauge-container">
                 <svg class="semi-svg" width="160" height="160" viewBox="0 0 160 160">
                   <defs>
@@ -370,7 +532,7 @@
                 </svg>
                 <div class="semi-text">
                   <div class="semi-num font-mono">264</div>
-                  <div class="dial-label" style="font-size: 0.55rem;">Queries</div>
+                  <div class="dial-label" style="font-size:0.55rem">Queries</div>
                 </div>
               </div>
             </div>
@@ -378,23 +540,21 @@
           </div>
         </div>
 
-        <!-- Bento Mobile Accordion Layout (Feature 2 Reflow Target) -->
+        <!-- Mobile Accordion -->
         <div class="mobile-bento-accordion" id="bento-accordion">
-          <!-- Accordion Item 1: System Load -->
           <div class="accordion-item" id="accordion-0">
             <div class="accordion-header">
               <span class="accordion-title">
-                <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93c.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 0 1 1.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204c.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78c-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 0 1-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107c-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93c-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 0 1-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204c-.165-.397-.505-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78c.165-.398.143-.854-.107-1.204l-.527-.738a1.125 1.125 0 0 1 .12-1.45l.773-.773a1.125 1.125 0 0 1 1.45-.12l.737.527c.35.25.807.272 1.204.107c.397-.165.71-.505.78-.929l.15-.894Z"/><path d="M15 12a3 3 0 1 1-6 0a3 3 0 0 1 6 0Z"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 0 1 1.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 0 1-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 0 1-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.107-1.204l-.527-.738a1.125 1.125 0 0 1 .12-1.45l.773-.773a1.125 1.125 0 0 1 1.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894Z"/><path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/></svg>
                 <span>System Load</span>
               </span>
               <span class="accordion-indicator">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="m19.5 8.25l-7.5 7.5l-7.5-7.5"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
               </span>
             </div>
             <div class="accordion-content">
               <div class="accordion-body">
                 <div class="accordion-body-visual">
-                  <!-- Re-used Dial Gauge -->
                   <div class="dial-gauge-container">
                     <svg class="dial-svg" width="140" height="140" viewBox="0 0 140 140">
                       <circle class="dial-bg" cx="70" cy="70" r="60" />
@@ -411,21 +571,19 @@
             </div>
           </div>
 
-          <!-- Accordion Item 2: SLA Response -->
           <div class="accordion-item" id="accordion-1">
             <div class="accordion-header">
               <span class="accordion-title">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 0 1 5.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M2.25 18 9 11.25l4.306 4.307a11.95 11.95 0 0 1 5.814-5.519l2.74-1.22m0 0-5.94-2.28m5.94 2.28-2.28 5.941"/></svg>
                 <span>SLA Response</span>
               </span>
               <span class="accordion-indicator">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="m19.5 8.25l-7.5 7.5l-7.5-7.5"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
               </span>
             </div>
             <div class="accordion-content">
               <div class="accordion-body">
                 <div class="accordion-body-visual">
-                  <!-- Re-used Lollipop Bar Chart -->
                   <div class="bar-chart-container">
                     <div class="chart-bar-line" style="height: 80px; --bar-height: 80px;"><div class="chart-bar-dot" style="background-color: var(--color-deep-saffron);"></div></div>
                     <div class="chart-bar-line" style="height: 45px; --bar-height: 45px;"><div class="chart-bar-dot" style="background-color: var(--color-deep-saffron);"></div></div>
@@ -439,21 +597,19 @@
             </div>
           </div>
 
-          <!-- Accordion Item 3: Token Usage -->
           <div class="accordion-item" id="accordion-2">
             <div class="accordion-header">
               <span class="accordion-title">
-                <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M10.5 6a7.5 7.5 0 1 0 7.5 7.5h-7.5V6Z"/><path d="M13.5 10.5H21A7.5 7.5 0 0 0 13.5 3v7.5Z"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M10.5 6a7.5 7.5 0 1 0 7.5 7.5h-7.5V6Z"/><path d="M13.5 10.5H21A7.5 7.5 0 0 0 13.5 3v7.5Z"/></svg>
                 <span>Token Usage</span>
               </span>
               <span class="accordion-indicator">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="m19.5 8.25l-7.5 7.5l-7.5-7.5"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
               </span>
             </div>
             <div class="accordion-content">
               <div class="accordion-body">
                 <div class="accordion-body-visual">
-                  <!-- Re-used Semi-circle Gauge -->
                   <div class="semi-gauge-container">
                     <svg class="semi-svg" width="160" height="160" viewBox="0 0 160 160">
                       <circle class="semi-bg" cx="80" cy="80" r="40" />
@@ -461,7 +617,7 @@
                     </svg>
                     <div class="semi-text">
                       <div class="semi-num font-mono">264</div>
-                      <div class="dial-label" style="font-size: 0.55rem;">Queries</div>
+                      <div class="dial-label" style="font-size:0.55rem">Queries</div>
                     </div>
                   </div>
                 </div>
@@ -473,111 +629,78 @@
       </div>
     </section>
 
-    <!-- Testimonials Section -->
+    <!-- ═══ SOCIAL PROOF — Horizontal scrolling testimonials ═══ -->
     <section class="testimonials-section" id="testimonials">
       <div class="container">
         <div class="testimonials-header">
-          <span class="section-label">// SOCIAL PROOF</span>
-          <h2>Trusted by the pioneers</h2>
-          <p>From high-growth startups to enterprise research labs, Armory is the chosen infrastructure for teams building the next era of AI.</p>
+          <span class="section-label font-mono">// SOCIAL PROOF</span>
+          <h2>Trusted by the<br><span class="text-gradient">pioneers</span></h2>
         </div>
-
-        <div class="testimonials-grid">
-          <!-- Card 1 -->
+      </div>
+      <div class="testimonials-scroll-wrap">
+        <div class="testimonials-scroll-track" id="testimonials-scroll">
           <div class="testimonial-card card-glass">
-            <div class="testimonial-top">
-              <h4>Infrastructure that finally scales</h4>
-              <div class="testimonial-stars">
-                <!-- Star SVGs -->
-                <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.956-4.756 4.635 1.123 6.545z"/></svg>
-                <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.956-4.756 4.635 1.123 6.545z"/></svg>
-                <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.956-4.756 4.635 1.123 6.545z"/></svg>
-                <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.956-4.756 4.635 1.123 6.545z"/></svg>
-                <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.956-4.756 4.635 1.123 6.545z"/></svg>
-              </div>
-              <p class="testimonial-comment">"The reliability of Armory is unmatched. We've migrated our entire neural pipeline to their edge nodes with zero downtime for our users."</p>
+            <div class="tc-stars">★★★★★</div>
+            <h4>Infrastructure that finally scales</h4>
+            <p>"The reliability of Armory is unmatched. We've migrated our entire neural pipeline to their edge nodes with zero downtime."</p>
+            <div class="tc-author">
+              <div class="tc-avatar">VL</div>
+              <span>Vertex Labs</span>
             </div>
-            <div class="testimonial-author">Vertex Labs</div>
           </div>
-
-          <!-- Card 2 -->
           <div class="testimonial-card card-glass">
-            <div class="testimonial-top">
-              <h4>Saved us months of R&D</h4>
-              <div class="testimonial-stars">
-                <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.956-4.756 4.635 1.123 6.545z"/></svg>
-                <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.956-4.756 4.635 1.123 6.545z"/></svg>
-                <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.956-4.756 4.635 1.123 6.545z"/></svg>
-                <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.956-4.756 4.635 1.123 6.545z"/></svg>
-                <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.956-4.756 4.635 1.123 6.545z"/></svg>
-              </div>
-              <p class="testimonial-comment">"Instead of building our own agent logic from scratch, we used Armory. We went from prototype to global production launch in weeks."</p>
+            <div class="tc-stars">★★★★★</div>
+            <h4>Saved us months of R&D</h4>
+            <p>"Instead of building our own agent logic from scratch, we used Armory. We went from prototype to production launch in weeks."</p>
+            <div class="tc-author">
+              <div class="tc-avatar">FS</div>
+              <span>FlowState AI</span>
             </div>
-            <div class="testimonial-author">FlowState AI</div>
           </div>
-
-          <!-- Card 3 -->
           <div class="testimonial-card card-glass">
-            <div class="testimonial-top">
-              <h4>Precision in every inference</h4>
-              <div class="testimonial-stars">
-                <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.956-4.756 4.635 1.123 6.545z"/></svg>
-                <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.956-4.756 4.635 1.123 6.545z"/></svg>
-                <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.956-4.756 4.635 1.123 6.545z"/></svg>
-                <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.956-4.756 4.635 1.123 6.545z"/></svg>
-                <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.956-4.756 4.635 1.123 6.545z"/></svg>
-              </div>
-              <p class="testimonial-comment">"The observability tools allow us to monitor agent accuracy in real-time. It has become a vital part of our model evaluation workflow."</p>
+            <div class="tc-stars">★★★★★</div>
+            <h4>Precision in every inference</h4>
+            <p>"The observability tools allow us to monitor agent accuracy in real-time. It has become a vital part of our evaluation workflow."</p>
+            <div class="tc-author">
+              <div class="tc-avatar">NS</div>
+              <span>Neural Sync</span>
             </div>
-            <div class="testimonial-author">Neural Sync</div>
           </div>
-
-          <!-- Card 4 -->
           <div class="testimonial-card card-glass">
-            <div class="testimonial-top">
-              <h4>Enterprise-grade by default</h4>
-              <div class="testimonial-stars">
-                <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.956-4.756 4.635 1.123 6.545z"/></svg>
-                <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.956-4.756 4.635 1.123 6.545z"/></svg>
-                <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.956-4.756 4.635 1.123 6.545z"/></svg>
-                <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.956-4.756 4.635 1.123 6.545z"/></svg>
-                <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.956-4.756 4.635 1.123 6.545z"/></svg>
-              </div>
-              <p class="testimonial-comment">"The node-based builder is a game-changer for our team. Every node is isolated and fully auditable, matching strict compliance rules."</p>
+            <div class="tc-stars">★★★★★</div>
+            <h4>Enterprise-grade by default</h4>
+            <p>"The node-based builder is a game-changer for our team. Every node is isolated and fully auditable, matching strict compliance rules."</p>
+            <div class="tc-author">
+              <div class="tc-avatar">SO</div>
+              <span>Sentinel Ops</span>
             </div>
-            <div class="testimonial-author">Sentinel Ops</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Feature 1: Pricing Tier Matrix with switcher controls -->
+    <!-- ═══ PRICING ═══ -->
     <section class="pricing-section" id="pricing">
       <div class="container">
         <div class="pricing-header">
-          <span class="section-label">// DYNAMIC CALCULATOR</span>
-          <h2>Flexible scales</h2>
+          <span class="section-label font-mono">// DYNAMIC CALCULATOR</span>
+          <h2>Flexible<br><span class="text-gradient">scales</span></h2>
           <p>Factoring regional exchange tariffs and billing cycle rates. Upgrade or downgrade anytime with zero lock-in contracts.</p>
         </div>
 
-        <!-- Matrix Switcher Controls -->
         <div class="pricing-controls">
-          <!-- Monthly/Annual Billing Switcher -->
           <div class="billing-switcher" id="billing-switcher-container">
             <span class="switcher-label active" id="billing-monthly">Monthly</span>
             <div class="toggle-track" id="billing-toggle" aria-label="Toggle Billing Cycle">
               <div class="toggle-thumb"></div>
             </div>
-            <span class="switcher-label" id="billing-annual">
-              Annual <span class="annual-badge">20% OFF</span>
-            </span>
+            <span class="switcher-label" id="billing-annual">Annual <span class="annual-badge">20% OFF</span></span>
           </div>
 
-          <!-- Currency Selector Dropdown -->
           <div class="currency-selector" id="currency-selector-container">
             <button class="currency-trigger" id="currency-trigger" aria-haspopup="listbox" aria-expanded="false">
               <span>USD</span>
-              <svg viewBox="0 0 24 24" fill="none"><path d="m19.5 8.25l-7.5 7.5l-7.5-7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <svg viewBox="0 0 24 24" fill="none"><path d="m19.5 8.25-7.5 7.5-7.5-7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
             <ul class="currency-dropdown" id="currency-dropdown" role="listbox">
               <li class="currency-option" data-currency="USD" role="option">USD ($)</li>
@@ -587,9 +710,7 @@
           </div>
         </div>
 
-        <!-- Dynamic Tiers Grid -->
         <div class="pricing-grid">
-          <!-- Tier 1: Starter -->
           <div class="pricing-card card-glass" id="tier-starter">
             <div>
               <div class="pricing-tier-name">Starter</div>
@@ -599,63 +720,34 @@
                 <span class="pricing-period" id="price-period-starter">/mo</span>
               </div>
               <ul class="pricing-features-list">
-                <li>
-                  <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.75l6 6 9-13.5"/></svg>
-                  <span>Up to 5 active agents</span>
-                </li>
-                <li>
-                  <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.75l6 6 9-13.5"/></svg>
-                  <span>10,000 runs per month</span>
-                </li>
-                <li>
-                  <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.75l6 6 9-13.5"/></svg>
-                  <span>Standard execution speed</span>
-                </li>
-                <li>
-                  <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.75l6 6 9-13.5"/></svg>
-                  <span>Community support</span>
-                </li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.75 6 6 9-13.5"/></svg><span>Up to 5 active agents</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.75 6 6 9-13.5"/></svg><span>10,000 runs per month</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.75 6 6 9-13.5"/></svg><span>Standard execution speed</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.75 6 6 9-13.5"/></svg><span>Community support</span></li>
               </ul>
             </div>
-            <button class="btn btn-secondary w-full" style="width: 100%;">Get Started</button>
+            <button class="btn btn-secondary" style="width:100%">Get Started</button>
           </div>
 
-          <!-- Tier 2: Pro (Recommended) -->
           <div class="pricing-card card-glass premium-tier" id="tier-pro">
             <div>
-              <div class="pricing-tier-name" style="color: var(--color-forsythia);">Pro</div>
+              <div class="pricing-tier-name" style="color:var(--color-forsythia)">Pro</div>
               <div class="pricing-price-container">
                 <span class="pricing-currency" id="price-sym-pro">$</span>
                 <span class="pricing-value font-mono" id="price-num-pro">99</span>
                 <span class="pricing-period" id="price-period-pro">/mo</span>
               </div>
               <ul class="pricing-features-list">
-                <li>
-                  <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.75l6 6 9-13.5"/></svg>
-                  <span>Up to 25 active agents</span>
-                </li>
-                <li>
-                  <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.75l6 6 9-13.5"/></svg>
-                  <span>100,000 runs per month</span>
-                </li>
-                <li>
-                  <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.75l6 6 9-13.5"/></svg>
-                  <span>Accelerated server nodes</span>
-                </li>
-                <li>
-                  <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.75l6 6 9-13.5"/></svg>
-                  <span>Priority email & chat support</span>
-                </li>
-                <li>
-                  <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.75l6 6 9-13.5"/></svg>
-                  <span>Advanced analytics board</span>
-                </li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.75 6 6 9-13.5"/></svg><span>Up to 25 active agents</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.75 6 6 9-13.5"/></svg><span>100,000 runs per month</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.75 6 6 9-13.5"/></svg><span>Accelerated server nodes</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.75 6 6 9-13.5"/></svg><span>Priority email &amp; chat support</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.75 6 6 9-13.5"/></svg><span>Advanced analytics board</span></li>
               </ul>
             </div>
-            <button class="btn btn-primary w-full" style="width: 100%;">Go Pro</button>
+            <button class="btn btn-primary" style="width:100%">Go Pro</button>
           </div>
 
-          <!-- Tier 3: Enterprise -->
           <div class="pricing-card card-glass" id="tier-enterprise">
             <div>
               <div class="pricing-tier-name">Enterprise</div>
@@ -665,42 +757,27 @@
                 <span class="pricing-period" id="price-period-enterprise">/mo</span>
               </div>
               <ul class="pricing-features-list">
-                <li>
-                  <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.75l6 6 9-13.5"/></svg>
-                  <span>Unlimited active agents</span>
-                </li>
-                <li>
-                  <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.75l6 6 9-13.5"/></svg>
-                  <span>Unlimited execution volume</span>
-                </li>
-                <li>
-                  <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.75l6 6 9-13.5"/></svg>
-                  <span>Isolated dedicated server nodes</span>
-                </li>
-                <li>
-                  <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.75l6 6 9-13.5"/></svg>
-                  <span>24/7 dedicated support representative</span>
-                </li>
-                <li>
-                  <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.75l6 6 9-13.5"/></svg>
-                  <span>Custom code nodes integration</span>
-                </li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.75 6 6 9-13.5"/></svg><span>Unlimited active agents</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.75 6 6 9-13.5"/></svg><span>Unlimited execution volume</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.75 6 6 9-13.5"/></svg><span>Isolated dedicated server nodes</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.75 6 6 9-13.5"/></svg><span>24/7 dedicated support rep</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.75 6 6 9-13.5"/></svg><span>Custom code node integrations</span></li>
               </ul>
             </div>
-            <button class="btn btn-secondary w-full" style="width: 100%;">Contact Sales</button>
+            <button class="btn btn-secondary" style="width:100%">Contact Sales</button>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- FAQ Accordion Section -->
+    <!-- ═══ FAQ ═══ -->
     <section class="faq-section" id="faq">
       <div class="container">
         <div class="faq-grid">
           <div class="faq-text">
-            <span class="section-label">// RESOURCES</span>
-            <h2>Common inquiries</h2>
-            <p>Everything you need to know about deploying, scaling, and securing your neural agents with Armory. Can't find an answer?</p>
+            <span class="section-label font-mono">// RESOURCES</span>
+            <h2>Common<br>inquiries</h2>
+            <p>Everything you need to know about deploying, scaling, and securing your neural agents with Armory.</p>
             <a href="mailto:support@armory.ai" class="btn btn-primary btn-icon" id="faq-contact-btn">
               <svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.372 1.349a.75.75 0 0 0-.744 0l-4.81 2.748L8 7.131l5.182-3.034zM14 5.357L8.75 8.43v6.005l4.872-2.784A.75.75 0 0 0 14 11zm-6.75 9.078V8.43L2 5.357V11c0 .27.144.518.378.651z"/></svg>
               <span>Contact Us</span>
@@ -708,66 +785,60 @@
           </div>
 
           <div class="faq-accordion">
-            <!-- FAQ 1 -->
             <div class="faq-item expanded">
               <button class="faq-trigger" aria-expanded="true">
                 <span>What is the Armory platform?</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="m19.5 8.25l-7.5 7.5l-7.5-7.5"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
               </button>
-              <div class="faq-content" style="max-height: 200px;">
+              <div class="faq-content" style="max-height:200px">
                 <p>Armory is a specialized infrastructure for building and deploying custom AI agents. We provide the neural logic and edge nodes required to run autonomous workflows at enterprise scale.</p>
               </div>
             </div>
 
-            <!-- FAQ 2 -->
             <div class="faq-item">
               <button class="faq-trigger" aria-expanded="false">
-                <span>Who is this template designed for?</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="m19.5 8.25l-7.5 7.5l-7.5-7.5"/></svg>
+                <span>Who is this platform designed for?</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
               </button>
               <div class="faq-content">
-                <p>It is engineered for scaling startups, developer squads, and data intelligence teams who need to orchestrate complex LLM execution tasks cleanly without infrastructure overhead.</p>
+                <p>It is engineered for scaling startups, developer squads, and data intelligence teams who need to orchestrate complex LLM execution tasks without infrastructure overhead.</p>
               </div>
             </div>
 
-            <!-- FAQ 3 -->
             <div class="faq-item">
               <button class="faq-trigger" aria-expanded="false">
                 <span>Does Armory provide pre-built agents?</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="m19.5 8.25l-7.5 7.5l-7.5-7.5"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
               </button>
               <div class="faq-content">
                 <p>Yes, we provide several baseline templates for customer support agent networks, data synchronization pipelines, code analysis helpers, and compliance monitoring setups.</p>
               </div>
             </div>
 
-            <!-- FAQ 4 -->
             <div class="faq-item">
               <button class="faq-trigger" aria-expanded="false">
                 <span>How does it differ from a standard chatbot?</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="m19.5 8.25l-7.5 7.5l-7.5-7.5"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
               </button>
               <div class="faq-content">
-                <p>Unlike standard static chatbots, Armory orchestrates multi-step decision loops, executes code runtimes in sandboxes, triggers external network protocols, and maintains transaction-level security.</p>
+                <p>Unlike static chatbots, Armory orchestrates multi-step decision loops, executes code runtimes in sandboxes, triggers external network protocols, and maintains transaction-level security.</p>
               </div>
             </div>
 
-            <!-- FAQ 5 -->
             <div class="faq-item">
               <button class="faq-trigger" aria-expanded="false">
                 <span>Can I use my own custom domain?</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="m19.5 8.25l-7.5 7.5l-7.5-7.5"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
               </button>
               <div class="faq-content">
                 <p>Yes! Every workflow deployment can be mapped to custom subdomains with dynamic routing, full SSL enforcement, and custom API authorization tokens.</p>
               </div>
             </div>
 
-            <!-- FAQ 6 -->
             <div class="faq-item">
               <button class="faq-trigger" aria-expanded="false">
                 <span>Is there a limit to how many agents I can build?</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="m19.5 8.25l-7.5 7.5l-7.5-7.5"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
               </button>
               <div class="faq-content">
                 <p>Starter plans support up to 5 active agents, Pro supports 25, and Enterprise plans offer fully customized scaling with unlimited active agent orchestrations.</p>
@@ -777,9 +848,29 @@
         </div>
       </div>
     </section>
+
+    <!-- ═══ CTA BANNER ═══ -->
+    <section class="cta-banner">
+      <div class="container">
+        <div class="cta-inner">
+          <div class="cta-lines" aria-hidden="true">
+            <div class="cta-line"></div>
+            <div class="cta-line"></div>
+            <div class="cta-line"></div>
+          </div>
+          <h2 class="cta-title" data-glitch="Ready to deploy?">Ready to deploy?</h2>
+          <p class="cta-desc">Join thousands of teams already running their intelligence on Armory. No credit card required to start.</p>
+          <a href="#pricing" class="btn btn-primary btn-icon cta-btn">
+            <span>Build A Workflow</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <!-- Premium Footer -->
+  <!-- ═══ FOOTER ═══ -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-top">
@@ -790,14 +881,14 @@
           </a>
           <p>Next-generation data automation and neural agent orchestration for high-growth enterprise models.</p>
         </div>
-        
+
         <div class="footer-column">
           <h4>Platform</h4>
           <ul class="footer-links">
             <li><a href="#workflow">Visual Builder</a></li>
             <li><a href="#features">Custom Agents</a></li>
             <li><a href="#pricing">Pricing Plans</a></li>
-            <li><a href="#faq">Observability Tools</a></li>
+            <li><a href="#faq">Observability</a></li>
           </ul>
         </div>
 
@@ -816,7 +907,7 @@
           <ul class="footer-links">
             <li><a href="#">About Us</a></li>
             <li><a href="#">Security Core</a></li>
-            <li><a href="#">Legal & Privacy</a></li>
+            <li><a href="#">Legal &amp; Privacy</a></li>
             <li><a href="#">Contact Support</a></li>
           </ul>
         </div>
@@ -833,7 +924,6 @@
     </div>
   </footer>
 
-  <!-- Link to Logic JS Script -->
   <script src="index.js"></script>
 </body>
 </html>
